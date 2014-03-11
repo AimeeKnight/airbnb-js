@@ -1,8 +1,8 @@
 {
-  "name": "name-of-application",
+  "name": "airbnb-js",
   "repository" : {
     "type" : "git",
-    "url"  : "http://github.com/USERNAME/NAME-OF-REPO.git"
+    "url"  : "http://github.com/AimeeKnight/airbnb-js.git"
   },
   "version": "0.0.1",
   "bin": {"coveralls" : "./node_modules/coveralls/bin/coveralls.js"},
