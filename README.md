@@ -1,4 +1,4 @@
-NSS Cohort 4 Integrated Node.js Template
+AirBnB - Node.js Version
 ========================================
 
 - Node.js
