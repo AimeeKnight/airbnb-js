@@ -19,3 +19,4 @@ AirBnB - Node.js Version
 - TravisCI
 - Coveralls
 
+[![Build Status](https://travis-ci.org/AimeeKnight/airbnb-js.png?branch=master)](https://travis-ci.org/AimeeKnight/airbnb-js)
