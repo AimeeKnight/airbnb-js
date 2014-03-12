@@ -1,0 +1,21 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  .row
+  .small-6.columns
+    form(action='/login', method='post', enctype='multipart/form-data')
+      fieldset
+        legend Login
+        .row
+          .small-12.columns
+            label Email
+            input(name='email', type='email', autofocus=true, required)
+        .row
+          .small-12.columns
+            label Password
+            input(name='password', type='password', required)
+        .row
+          .small-12.columns
+            button.small.radius Login

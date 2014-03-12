@@ -62,5 +62,28 @@ describe('User', function(){
     });
   });
 
+  describe('findByEmailAndPassword', function(){
+    it('should find a user by their email and password', function(done){
+      User.findByEmailAndPassword('sue@nomail.com', 'abcd', function(user){
+        expect(user.email).to.equal('sue@nomail.com');
+        done();
+      });
+    });
+
+    it('should not find a user due to a bad email', function(done){
+      User.findByEmailAndPassword('bad@nomail.com', 'abcd', function(user){
+        expect(user).to.be.null;
+        done();
+      });
+    });
+
+    it('should not find user due to a bad password', function(done){
+      User.findByEmailAndPassword('sue@nomail.com', 'wrong', function(user){
+        expect(user).to.be.null;
+        done();
+      });
+    });
+  });
+
 ////////// END //////////
 });

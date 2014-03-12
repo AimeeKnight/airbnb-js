@@ -69,5 +69,32 @@ describe('users', function(){
     });
   //////////
   });
+
+  describe('POST /login', function(){
+    it('should login a user', function(done){
+      request(app)
+      .post('/login')
+      .field('email', 'sue@nomail.com')
+      .field('password', 'abcd')
+      .end(function(err, res){
+        expect(res.status).to.equal(302);
+        expect(res.headers['set-cookie']).to.have.length(1);
+        done();
+      });
+    });
+
+    it('should not login a user due to bad login', function(done){
+      request(app)
+      .post('/login')
+      .field('email', 'bob@nomail.com')
+      .field('password', '5678')
+      .end(function(err, res){
+        expect(res.status).to.equal(200);
+        expect(res.text).to.include('Login');
+        done();
+      });
+    });
+  //////////
+  });
 //////////
 });

@@ -3,7 +3,7 @@ module.exports = User;
 var bcrypt = require('bcrypt');
 var users = global.nss.db.collection('users');
 var email = require('../lib/email');
-//var Mongo = require('mongodb');
+var Mongo = require('mongodb');
 //var fs = require('fs');
 //var path = require('path');
 
@@ -28,6 +28,29 @@ User.prototype.register = function(fn){
         fn();
       }
     });
+  });
+};
+
+User.findOne = function(id, fn){
+  var _id = Mongo.ObjectID(id);
+  users.findOne({_id:_id}, function(err, record){
+    fn(record);
+  });
+};
+
+User.findByEmailAndPassword = function(email, password, fn){
+  users.findOne({email:email}, function(err, record){
+    if(record){
+      bcrypt.compare(password, record.password, function(err, result){
+        if(result){
+          fn(record);
+        }else{
+          fn(null);
+        }
+      });
+    }else{
+      fn(null);
+    }
   });
 };
 

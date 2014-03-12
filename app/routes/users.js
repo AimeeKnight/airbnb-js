@@ -17,3 +17,25 @@ exports.create = function(req, res){
     }
   });
 };
+
+exports.login = function(req, res){
+  res.render('users/login', {title: 'Login'});
+};
+
+exports.authenticate = function(req, res){
+  User.findByEmailAndPassword(req.body.email, req.body.password, function(user){
+    if(user){
+      req.session.regenerate(function(){
+        req.session.userId = user._id.toString();
+        req.session.save(function(){
+          res.redirect('/');
+          //res.redirect('users/' + req.session.userId);
+        });
+      });
+    }else{
+      req.session.destroy(function(){
+        res.render('users/login', {title: 'Login'});
+      });
+    }
+  });
+};
