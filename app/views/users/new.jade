@@ -1,0 +1,27 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  .row
+  .small-6.columns
+    form(action='/register', method='post', enctype='multipart/form-data')
+      fieldset
+        legend Register
+        .row
+          .small-12.columns
+            label Email
+            input(name='email', type='email', autofocus=true, required)
+        .row
+          .small-12.columns
+            label Password
+            input(name='password', type='password', required)
+        .row
+          .small-12.columns
+            label Role
+            select(name='role', required)
+              option Host
+              option Guest
+        .row
+          .small-12.columns
+            button.small.radius Register
