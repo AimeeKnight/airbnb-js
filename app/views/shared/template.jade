@@ -22,6 +22,10 @@ html(class='no-js', lang='en')
         ul.right
           li: a(href="/") Home
           li.divider
+          li: a(href="/listings/new") New Listing
+          li.divider
+          li: a(href="/listings") Listings
+          li.divider
           li: a(href="/register") Register
           li.divider
           li: a(href="/login") Login
@@ -33,5 +37,7 @@ html(class='no-js', lang='en')
     script(src='/js/vendor/foundation.min.js')
     script(src='/js/vendor/lodash.js')
     script(src='/js/vendor/moment.js')
+    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAUd6JH9G5K5DRpj6XUlN37dCeasgq2iqQ&sensor=true')
     script(src='/js/source/main.js')
+    block scripts
 

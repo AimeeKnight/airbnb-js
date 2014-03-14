@@ -1,0 +1,30 @@
+extends ../shared/template
+
+block content
+  h1= title
+
+  .row
+  .small-6.columns
+    form(action='/listings', method='post', enctype='multipart/form-data')
+      fieldset
+        legend Listing
+        .row
+          .small-12.columns
+            label Name
+            input(name='name', type='text', autofocus=true, required)
+        .row
+          .small-12.columns
+            label Amount
+            input(name='amount', type='text', required)
+        .row
+          .small-12.columns
+            label Address
+            input(name='address', type='text')
+            input(name='lat', type='hidden')
+            input(name='lng', type='hidden')
+        .row
+          .small-12.columns
+            button.small.radius#create Create Listing
+
+block scripts
+  script(src='/js/source/new-listing.js')
